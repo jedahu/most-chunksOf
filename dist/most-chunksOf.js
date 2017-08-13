@@ -28,6 +28,7 @@ ChunksOfSink.prototype.error = function error (time, err) {
 
 ChunksOfSink.prototype.end = function end (time, value) {
   if (this.length > 0) {
+    this.xs.length = this.length;
     this.sink.event(time, this.xs);
   }
   return this.sink.end(time, value)
